@@ -1,3 +1,28 @@
+# @miragari/providers
+
+Built-in MediaRouter providers plus the `createMediaRouter()` convenience
+factory.
+
+## Install
+
+```bash
+npm install @miragari/providers
+```
+
+## Use this package when
+
+- you want the quickest entrypoint for app integration
+- you need built-in OpenAI, Google, Qwen, HappyHorse, or Volcengine adapters
+- you also want provider authoring helpers such as `defineHttpProvider()`
+
+## Repository docs
+
+- Root overview: <https://github.com/Zehight/mediaRouter>
+- English docs: <https://github.com/Zehight/mediaRouter/blob/main/docs/en/getting-started.md>
+- 中文文档: <https://github.com/Zehight/mediaRouter/blob/main/docs/zh-CN/getting-started.md>
+
+---
+
 # Adding a Provider
 
 MediaRouter providers are contributed as provider plugins. A provider plugin is

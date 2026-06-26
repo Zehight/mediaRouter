@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediaRouter</title>
+    <meta
+      name="description"
+      content="一个统一封装图片、视频、音频和 3D 生成 provider 的 TypeScript SDK。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="./zh-CN.html">MediaRouter</a>
+        <nav class="nav">
+          <a href="./index.html">EN</a>
+          <a href="./zh-CN.html">中文</a>
+          <a href="https://github.com/Zehight/mediaRouter">GitHub</a>
+          <a href="https://www.npmjs.com/package/@miragari/providers">npm</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">多媒体生成路由 SDK</p>
+          <h1>用一套稳定接口，接图片、视频、音频和 3D provider。</h1>
+          <p class="lede">
+            MediaRouter 统一请求模型、尺寸系统、异步任务、批量拆分和输出结构，
+            让产品团队不必为每个 provider 反复重写一套接入逻辑。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/Zehight/mediaRouter">查看仓库</a>
+            <a class="button secondary" href="../README.zh-CN.md">阅读中文 README</a>
+          </div>
+        </section>
+
+        <section class="grid-section">
+          <article class="card card-spotlight">
+            <span class="label">安装</span>
+            <pre><code>npm install @miragari/providers</code></pre>
+          </article>
+          <article class="card">
+            <span class="label">包</span>
+            <ul class="compact-list">
+              <li><code>@miragari/core</code></li>
+              <li><code>@miragari/client</code></li>
+              <li><code>@miragari/providers</code></li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="label">适合谁</span>
+            <ul class="compact-list">
+              <li>多 provider 产品团队</li>
+              <li>SDK / 平台工程师</li>
+              <li>自定义适配层作者</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="feature-band">
+          <div>
+            <p class="eyebrow">稳定层与逃生门</p>
+            <h2>共享参数保持稳定，provider 私有参数放到专属出口。</h2>
+          </div>
+          <div class="feature-list">
+            <div class="feature-item">
+              <h3>统一请求模型</h3>
+              <p>跨 provider 的公共字段集中放在共享 input 与 options。</p>
+            </div>
+            <div class="feature-item">
+              <h3>插件式 provider</h3>
+              <p>既能直接用内置适配，也能实现你自己的 facade。</p>
+            </div>
+            <div class="feature-item">
+              <h3>一致任务生命周期</h3>
+              <p>轮询、等待、批量拆分、归一化输出都走同一套逻辑。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="code-panel">
+          <div class="panel-copy">
+            <p class="eyebrow">快速开始</p>
+            <h2>今天先接一个 provider，明天换平台时不用重写业务层。</h2>
+          </div>
+          <pre><code>import { createMediaRouter } from "@miragari/providers"
+
+const client = createMediaRouter({
+  provider: "openai",
+  providers: {
+    openai: process.env.OPENAI_API_KEY!,
+  },
+})
+
+const result = await client.generateImage({
+  prompt: "一张电影感的白色台灯产品图",
+  width: 1024,
+  height: 1024,
+  quality: "high",
+})</code></pre>
+        </section>
+
+        <section class="doc-links">
+          <a class="doc-card" href="../docs/zh-CN/getting-started.md">
+            <span class="label">文档</span>
+            <strong>中文文档</strong>
+            <span>快速开始、目录结构和发布说明</span>
+          </a>
+          <a class="doc-card" href="../docs/en/getting-started.md">
+            <span class="label">Guide</span>
+            <strong>English documentation</strong>
+            <span>Quick start, structure, and release notes</span>
+          </a>
+          <a class="doc-card" href="../packages/providers/README.md">
+            <span class="label">Providers</span>
+            <strong>Provider 开发指南</strong>
+            <span>HTTP provider 模式与 toolkit 使用说明</span>
+          </a>
+        </section>
+      </main>
+    </div>
+  </body>
+  </html>

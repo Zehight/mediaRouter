@@ -1,6 +1,6 @@
 # @miragari/core
 
-Shared protocol and validation types for MediaRouter.
+Shared protocol and validation layer for MediaRouter.
 
 ## Install
 
@@ -8,14 +8,21 @@ Shared protocol and validation types for MediaRouter.
 npm install @miragari/core
 ```
 
-## Exports
+## What this package includes
 
 - request and result types
 - provider plugin contracts
 - dimension helpers
-- validation and normalized error helpers
+- validation helpers
+- normalized error primitives
 
-## Docs
+## Typical use case
 
-Project docs and higher-level SDK examples live in the repository root:
-[mediaRouter](https://github.com/Zehight/mediaRouter).
+Use this package when you are building your own router shell, provider plugin,
+or internal tooling on top of MediaRouter concepts.
+
+## Related docs
+
+- Repository overview: <https://github.com/Zehight/mediaRouter>
+- English docs: <https://github.com/Zehight/mediaRouter/blob/main/docs/en/getting-started.md>
+- 中文文档: <https://github.com/Zehight/mediaRouter/blob/main/docs/zh-CN/getting-started.md>

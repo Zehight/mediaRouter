@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediaRouter</title>
+    <meta
+      name="description"
+      content="A TypeScript-first router SDK for image, video, audio, and 3D generation providers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">MediaRouter</a>
+        <nav class="nav">
+          <a href="./index.html">EN</a>
+          <a href="./zh-CN.html">中文</a>
+          <a href="https://github.com/Zehight/mediaRouter">GitHub</a>
+          <a href="https://www.npmjs.com/package/@miragari/providers">npm</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">TypeScript-first media generation routing</p>
+          <h1>One stable SDK across image, video, audio, and 3D providers.</h1>
+          <p class="lede">
+            MediaRouter normalizes provider requests, dimensions, async jobs,
+            batching, and result shapes so product teams can ship faster
+            without rewriting every integration from scratch.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/Zehight/mediaRouter">Open Repository</a>
+            <a class="button secondary" href="../README.md">Read English README</a>
+          </div>
+        </section>
+
+        <section class="grid-section">
+          <article class="card card-spotlight">
+            <span class="label">Install</span>
+            <pre><code>npm install @miragari/providers</code></pre>
+          </article>
+          <article class="card">
+            <span class="label">Packages</span>
+            <ul class="compact-list">
+              <li><code>@miragari/core</code></li>
+              <li><code>@miragari/client</code></li>
+              <li><code>@miragari/providers</code></li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="label">Built for</span>
+            <ul class="compact-list">
+              <li>multi-provider product teams</li>
+              <li>SDK and platform engineers</li>
+              <li>custom provider adapter authors</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="feature-band">
+          <div>
+            <p class="eyebrow">What stays stable</p>
+            <h2>Shared request semantics, provider-specific escape hatches.</h2>
+          </div>
+          <div class="feature-list">
+            <div class="feature-item">
+              <h3>Normalized request model</h3>
+              <p>Keep stable parameters in shared input and option fields.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Provider plugins</h3>
+              <p>Use built-in adapters or implement your own facade cleanly.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Async job lifecycle</h3>
+              <p>Poll, wait, batch split, and normalize assets consistently.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="code-panel">
+          <div class="panel-copy">
+            <p class="eyebrow">Quick start</p>
+            <h2>Generate an image with one provider today, swap providers later.</h2>
+          </div>
+          <pre><code>import { createMediaRouter } from "@miragari/providers"
+
+const client = createMediaRouter({
+  provider: "openai",
+  providers: {
+    openai: process.env.OPENAI_API_KEY!,
+  },
+})
+
+const result = await client.generateImage({
+  prompt: "A matte white desk lamp in a clean studio render",
+  width: 1024,
+  height: 1024,
+  quality: "high",
+})</code></pre>
+        </section>
+
+        <section class="doc-links">
+          <a class="doc-card" href="../docs/en/getting-started.md">
+            <span class="label">Guide</span>
+            <strong>English documentation</strong>
+            <span>Quick start, structure, and release notes</span>
+          </a>
+          <a class="doc-card" href="../docs/zh-CN/getting-started.md">
+            <span class="label">文档</span>
+            <strong>中文文档</strong>
+            <span>快速开始、发布流程与仓库结构说明</span>
+          </a>
+          <a class="doc-card" href="../packages/providers/README.md">
+            <span class="label">Providers</span>
+            <strong>Provider authoring guide</strong>
+            <span>HTTP provider patterns and toolkit usage</span>
+          </a>
+        </section>
+      </main>
+    </div>
+  </body>
+  </html>
