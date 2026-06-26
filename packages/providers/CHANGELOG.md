@@ -1,5 +1,13 @@
 # @miragari/ai-media-router
 
+## 0.2.1
+
+### Patch Changes
+
+- Bind the default global fetch before exposing it to provider runtimes, which fixes browser environments where calling an unbound `window.fetch` throws `Illegal invocation`.
+- Updated dependencies
+  - @miragari/ai-media-router-client@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes

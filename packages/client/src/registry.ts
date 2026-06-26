@@ -32,14 +32,15 @@ export class ProviderRegistry {
   constructor(input: ProviderRegistryInput) {
     this.plugins = input.plugins
     this.providers = normalizeProviders(input.providers)
-    this.fetchImpl = input.fetch ?? defaultFetch()
-    if (!this.fetchImpl) {
+    const fetchImpl = input.fetch ?? defaultFetch()
+    if (!fetchImpl) {
       throw new MediaRouterException(
         createMediaRouterError("BAD_REQUEST", "fetch implementation is required", {
           provider: "registry",
         }),
       )
     }
+    this.fetchImpl = fetchImpl
   }
 
   get(providerName: string): {

@@ -1,6 +1,6 @@
 {
   "name": "@miragari/ai-media-router-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Client runtime for AI Media Router and multi-provider media generation workflows.",
   "type": "module",
   "main": "./dist/index.js",
