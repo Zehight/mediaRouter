@@ -32,7 +32,7 @@ export class ProviderRegistry {
   constructor(input: ProviderRegistryInput) {
     this.plugins = input.plugins
     this.providers = normalizeProviders(input.providers)
-    this.fetchImpl = input.fetch ?? globalThis.fetch
+    this.fetchImpl = input.fetch ?? defaultFetch()
     if (!this.fetchImpl) {
       throw new MediaRouterException(
         createMediaRouterError("BAD_REQUEST", "fetch implementation is required", {
@@ -91,6 +91,11 @@ export class ProviderRegistry {
     }
     return plugin
   }
+}
+
+function defaultFetch(): typeof fetch | undefined {
+  if (typeof globalThis.fetch !== "function") return undefined
+  return globalThis.fetch.bind(globalThis)
 }
 
 function normalizeProviders(

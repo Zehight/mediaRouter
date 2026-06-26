@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 import type { ProviderPlugin } from "@miragari/ai-media-router-core"
 import { ProviderRegistry } from "./registry.js"
 
@@ -13,6 +13,12 @@ const plugin = {
   },
 } satisfies ProviderPlugin
 const fetchImpl = (() => Promise.reject(new Error("unused"))) as typeof fetch
+const originalFetch = globalThis.fetch
+
+afterEach(() => {
+  vi.restoreAllMocks()
+  globalThis.fetch = originalFetch
+})
 
 describe("ProviderRegistry", () => {
   it("accepts API key shorthand when provider name matches plugin id", () => {
@@ -90,5 +96,27 @@ describe("ProviderRegistry", () => {
     })
     expect(resolved.runtime.config.plugin).toBe("custom")
     expect(resolved.runtime.provider).toBe("customProxy")
+  })
+
+  it("binds the default global fetch before exposing it to provider runtimes", async () => {
+    const boundFetch = vi.fn(async function (this: typeof globalThis) {
+      if (this !== globalThis) {
+        throw new TypeError("Illegal invocation")
+      }
+      return new Response(null, { status: 204 })
+    }) as typeof fetch
+    globalThis.fetch = boundFetch
+
+    const registry = new ProviderRegistry({
+      plugins: { custom: plugin },
+      providers: {
+        custom: "key",
+      },
+    })
+
+    await expect(registry.get("custom").runtime.fetch("https://example.com")).resolves.toBeInstanceOf(
+      Response,
+    )
+    expect(boundFetch).toHaveBeenCalledOnce()
   })
 })
