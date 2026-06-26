@@ -1,6 +1,6 @@
 {
   "name": "@miragari/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared protocol, validation, and provider types for MediaRouter.",
   "type": "module",
   "main": "./dist/index.js",
